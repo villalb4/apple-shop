@@ -40,22 +40,13 @@ const FEATURED_PRODUCTS = [
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-16 border-b border-gray-100">
+    <section>
       <div className="container">
         <div className="flex items-center justify-start gap-4 mb-6">
           <h2 className="text-xl font-light text-gray-400">Destacados</h2>
         </div>
 
         <ProductGrid products={FEATURED_PRODUCTS} />
-
-        <div className="mt-8 text-center md:hidden">
-          <Link
-            href="/products"
-            className="inline-flex items-center text-sm font-semibold hover:underline"
-          >
-            Ver todo
-          </Link>
-        </div>
       </div>
     </section>
   );

@@ -67,7 +67,7 @@ const INSTAGRAM_POSTS: InstagramPost[] = [
 
 export default function InstagramFeed() {
   return (
-    <section className="w-full py-8">
+    <section className="w-full">
       <div className="container">
         <div className="flex items-center justify-start gap-4 mb-6">
           <h2 className="text-xl font-light text-gray-400">Instagram Feed</h2>

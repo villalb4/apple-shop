@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Text Content */}
       <div className="text-center space-y-4 z-10 animate-slideUp">
         <h1 className="text-5xl md:text-7xl font-bold text-[#1d1d1f] tracking-tight">
-          iPhone
+          iPhone Air
         </h1>
         <h2 className="text-base md:text-base text-[#1d1d1f] font-normal">
           La nueva generación ya disponible

@@ -27,19 +27,32 @@ const FEATURES = [
 
 export default function Features() {
   return (
-    <section className="py-16 bg-gray-50 border-y border-gray-100">
-      <div className="container">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="border-y">
+      <div className="container border-x">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((feature, index) => (
-            <div key={index} className="flex flex-col items-center text-center">
-              <div className="mb-4 p-3 bg-white border border-gray-200 rounded-none shadow-sm">
+            <div
+              key={index}
+              className={`flex flex-col items-center text-center py-12 px-6 ${
+                index !== FEATURES.length - 1 ? "lg:border-r" : ""
+              } ${
+                index % 2 === 0 && index !== FEATURES.length - 1
+                  ? "sm:border-r"
+                  : ""
+              }`}
+            >
+              <div className="mb-4 p-4 border">
                 <feature.icon
-                  className="w-8 h-8 text-black"
+                  className="w-6 h-6 text-black"
                   strokeWidth={1.5}
                 />
               </div>
-              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-500 text-sm">{feature.description}</p>
+              <h3 className="text-sm font-semibold mb-2 uppercase tracking-wide">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 text-xs leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

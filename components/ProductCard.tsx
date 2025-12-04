@@ -40,7 +40,7 @@ export default function ProductCard({
         {/* Card Content */}
         <div className="px-4 py-2">
           <span className="text-gray-500 text-sm">apple</span>
-          <h3 className="text-base font-bold">{name}</h3>
+          <h3 className="text-base font-bold truncate">{name}</h3>
         </div>
 
         {/* Card footer */}

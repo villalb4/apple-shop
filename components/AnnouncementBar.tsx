@@ -1,5 +1,3 @@
-import { Dot } from "lucide-react";
-
 const AnnouncementBar = () => {
   const messages = [
     "Envíos a todo el país",
@@ -18,7 +16,7 @@ const AnnouncementBar = () => {
               {messages.map((msg, idx) => (
                 <span key={`${i}-${idx}`} className="flex items-center">
                   {msg}
-                  <Dot className="mx-4" />
+                  <span className="mx-6">•</span>
                 </span>
               ))}
             </div>
@@ -32,7 +30,7 @@ const AnnouncementBar = () => {
               {messages.map((msg, idx) => (
                 <span key={`clone-${i}-${idx}`} className="flex items-center">
                   {msg}
-                  <Dot className="mx-4" />
+                  <span className="mx-6">•</span>
                 </span>
               ))}
             </div>

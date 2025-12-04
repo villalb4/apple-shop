@@ -51,7 +51,7 @@ const faqData: FAQItem[] = [
 
 export default function FAQAccordion() {
   return (
-    <div className="container mt-16 mb-8">
+    <div className="container">
       <div className="flex items-center justify-start gap-4 mb-6">
         <h2 className="text-xl font-light text-gray-400">
           Preguntas Frecuentes
