@@ -31,7 +31,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <div className="flex flex-col gap-20 min-h-screen py-20">
+    <div className="flex flex-col gap-20 min-h-screen py-10 md:py-20">
       <div>
         <div className="container mx-auto mb-10 flex items-center justify-between">
           <Breadcrumb>

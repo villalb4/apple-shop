@@ -28,7 +28,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <div className="flex flex-col gap-20 min-h-screen bg-white dark:bg-black py-22">
+    <div className="flex flex-col gap-20 min-h-screen bg-white dark:bg-black py-12 md:py-22">
       <div className="container mx-auto">
         <div className="mb-12">
           <Breadcrumb>
