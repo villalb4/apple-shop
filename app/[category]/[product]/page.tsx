@@ -28,9 +28,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black pb-8 pt-20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
+    <div className="flex flex-col gap-20 min-h-screen bg-white dark:bg-black py-22">
+      <div className="container mx-auto">
+        <div className="mb-12">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -51,7 +51,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
-          <div className="relative aspect-square bg-gray-100 rounded-3xl overflow-hidden">
+          <div className="relative aspect-square bg-gray-100 overflow-hidden">
             <Image
               src={product.image}
               alt={product.name}
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="pt-4">
               <Button size="lg" className="w-full md:w-auto px-8 rounded-full">
-                Añadir al carrito
+                Consultar por WhatsApp
               </Button>
             </div>
 

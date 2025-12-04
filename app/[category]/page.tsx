@@ -31,37 +31,43 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
-    <div className="bg-gray-50 dark:bg-black min-h-screen pb-8">
-      <div className="container mx-auto py-3 flex items-center justify-between pt-20">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{categoryName}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+    <div className="flex flex-col gap-20 min-h-screen py-20">
+      <div>
+        <div className="container mx-auto mb-10 flex items-center justify-between">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{categoryName}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
-        <Select>
-          <SelectTrigger className="w-[200px] rounded-none">
-            <SelectValue placeholder="Ordenar por" />
-          </SelectTrigger>
-          <SelectContent className="rounded-none">
-            <SelectItem value="recientes">Más recientes</SelectItem>
-            <SelectItem value="precio-menor">Precio: Menor a Mayor</SelectItem>
-            <SelectItem value="precio-mayor">Precio: Mayor a Menor</SelectItem>
-            <SelectItem value="vendidos">Más vendidos</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+          <Select>
+            <SelectTrigger className="w-[200px] rounded-none">
+              <SelectValue placeholder="Ordenar por" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none">
+              <SelectItem value="recientes">Más recientes</SelectItem>
+              <SelectItem value="precio-menor">
+                Precio: Menor a Mayor
+              </SelectItem>
+              <SelectItem value="precio-mayor">
+                Precio: Mayor a Menor
+              </SelectItem>
+              <SelectItem value="vendidos">Más vendidos</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
 
-      <div className="container mx-auto py-8">
-        <main className="flex-1">
-          <ProductGrid products={products} categorySlug={category} />
-        </main>
+        <div className="container mx-auto">
+          <main className="flex-1">
+            <ProductGrid products={products} categorySlug={category} />
+          </main>
+        </div>
       </div>
 
       <FAQAccordion />
