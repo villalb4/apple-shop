@@ -43,9 +43,7 @@ export default function FeaturedProducts() {
     <section className="py-16 border-b border-gray-100">
       <div className="container">
         <div className="flex items-center justify-start gap-4 mb-6">
-          <h2 className="text-xl font-light text-gray-400">
-            Preguntas Frecuentes
-          </h2>
+          <h2 className="text-xl font-light text-gray-400">Destacados</h2>
         </div>
 
         <ProductGrid products={FEATURED_PRODUCTS} />
