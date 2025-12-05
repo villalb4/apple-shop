@@ -94,7 +94,7 @@ export default function Header() {
               {/* Mobile Menu Drawer */}
               <Drawer direction="right">
                 <DrawerTrigger asChild>
-                  <button className="md:hidden text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-smooth">
+                  <button className="md:hidden text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-smooth mr-2">
                     <Menu size={20} />
                   </button>
                 </DrawerTrigger>
