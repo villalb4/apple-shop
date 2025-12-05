@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { generateSEOMetadata } from "@/lib/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +15,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "AppleStore - iPhone 15 Pro y Accesorios Premium | Tienda Oficial",
+export const metadata: Metadata = generateSEOMetadata({
+  subtitle: "Nombre",
   description:
-    "Descubre la última generación de iPhone 15 Pro, AirPods y accesorios Apple premium. Envío gratis, garantía oficial y los mejores precios.",
-};
+    "Descubre la última generación de iPhones y accesorios Apple premium. Envío a todo el país, garantía oficial y los mejores precios.",
+  keywords: ["iPhone", "accesorios Apple", "tienda Apple"],
+});
 
 export default function RootLayout({
   children,

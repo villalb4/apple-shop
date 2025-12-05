@@ -11,13 +11,67 @@ import Image from "next/image";
 import { getProductBySlug } from "@/lib/products";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
+import { generateSEOMetadata } from "@/lib/metadata";
+import { Metadata } from "next";
 
 interface ProductPageProps {
   params: Promise<{ category: string; product: string }>;
 }
 
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { category, product: productSlug } = await params;
+  const product = getProductBySlug(productSlug);
+
+  if (!product) {
+    return generateSEOMetadata({
+      subtitle: "Producto no encontrado",
+      description: "El producto que buscas no está disponible.",
+    });
+  }
+
+  return generateSEOMetadata({
+    subtitle: product.name,
+    description: product.description,
+    keywords: [
+      product.name,
+      product.category,
+      product.color,
+      `${product.name} ${product.color}`,
+    ],
+    image: product.image,
+    url: `https://tudominio.com/${category}/${productSlug}`,
+  });
+}
+
+import CategoryView from "@/components/CategoryView";
+import { getProductsBySubcategory } from "@/lib/products";
+
+const SUBCATEGORIES = ["nuevos-sellados", "semi-nuevos", "accesorios"];
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const { category, product: productSlug } = await params;
+
+  // Check if the "product" is actually a subcategory
+  if (SUBCATEGORIES.includes(productSlug)) {
+    const products = getProductsBySubcategory(category, productSlug);
+    // Capitalize for display
+    const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+    const subcategoryName = productSlug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+    return (
+      <CategoryView
+        categoryName={`${categoryName} - ${subcategoryName}`}
+        categorySlug={category}
+        products={products}
+      />
+    );
+  }
+
   const product = getProductBySlug(productSlug);
 
   if (!product) {

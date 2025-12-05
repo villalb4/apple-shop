@@ -13,14 +13,23 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import MobileMenu from "./MobileMenu";
 import { NAV_ITEMS } from "@/lib/categories";
+
+import NavCard from "./NavCard";
 
 interface NavItem {
   name: string;
-  columns: {
+  mainLink: {
     title: string;
-    href?: string; // URL for the title link
+    href: string;
     items: string[];
+  };
+  cards: {
+    title: string;
+    description: string;
+    href: string;
+    iconName: string;
   }[];
 }
 
@@ -90,61 +99,7 @@ export default function Header() {
                   </button>
                 </DrawerTrigger>
                 <DrawerContent>
-                  <DrawerHeader className="border-b">
-                    <div className="flex items-center justify-between">
-                      <DrawerTitle className="text-xl font-bold">
-                        Menú
-                      </DrawerTitle>
-                      <DrawerClose asChild>
-                        <button className="text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-smooth">
-                          <X size={24} />
-                        </button>
-                      </DrawerClose>
-                    </div>
-                  </DrawerHeader>
-
-                  {/* Mobile Navigation Content */}
-                  <div className="overflow-y-auto p-6 space-y-6">
-                    {navItems.map((item) => (
-                      <div key={item.name} className="space-y-4">
-                        <h3 className="text-lg font-semibold text-[#1d1d1f]">
-                          {item.name}
-                        </h3>
-                        <div className="space-y-4 pl-2">
-                          {item.columns.map((column, idx) => (
-                            <div key={idx} className="space-y-2">
-                              {/* Column Title */}
-                              {column.href ? (
-                                <DrawerClose asChild>
-                                  <Link
-                                    href={column.href}
-                                    className="text-sm font-semibold text-gray-900 hover:text-[#0071e3] uppercase tracking-wide transition-colors block"
-                                  >
-                                    {column.title}
-                                  </Link>
-                                </DrawerClose>
-                              ) : (
-                                <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                                  {column.title}
-                                </h4>
-                              )}
-
-                              {/* Column Items */}
-                              <ul className="space-y-2 pl-2">
-                                {column.items.map((link, linkIdx) => (
-                                  <li key={linkIdx}>
-                                    <span className="text-[#1d1d1f]/70 text-sm block">
-                                      {link}
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <MobileMenu />
                 </DrawerContent>
               </Drawer>
             </div>
@@ -163,41 +118,45 @@ export default function Header() {
             {navItems.map((item) => (
               <div
                 key={item.name}
-                className={`grid grid-cols-4 gap-12 transition-opacity duration-200 ease-out ${
+                className={`grid grid-cols-12 gap-8 transition-opacity duration-200 ease-out ${
                   activeDropdown === item.name
                     ? "opacity-100 block"
                     : "opacity-0 hidden"
                 }`}
               >
-                {item.columns.map((column, idx) => (
-                  <div key={idx} className="space-y-4">
-                    {/* Title - Clickable if href exists */}
-                    {column.href ? (
-                      <Link
-                        href={column.href}
-                        className="text-xs font-semibold text-gray-900 hover:text-[#0071e3] uppercase tracking-wide transition-colors block"
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        {column.title}
-                      </Link>
-                    ) : (
-                      <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                        {column.title}
-                      </h3>
-                    )}
+                {/* Main Link Column (Left) */}
+                <div className="col-span-3 space-y-4 border-r border-gray-100 pr-8">
+                  <Link
+                    href={item.mainLink.href}
+                    className="text-xs font-semibold text-gray-900 hover:text-[#0071e3] uppercase tracking-wide transition-colors block mb-4"
+                    onClick={() => setActiveDropdown(null)}
+                  >
+                    {item.mainLink.title}
+                  </Link>
+                  <ul className="space-y-3">
+                    {item.mainLink.items.map((link, linkIdx) => (
+                      <li key={linkIdx}>
+                        <span className="text-[#1d1d1f]/70 text-sm block hover:text-[#1d1d1f] transition-colors cursor-default">
+                          {link}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                    {/* Items - Non-clickable */}
-                    <ul className="space-y-3">
-                      {column.items.map((link, linkIdx) => (
-                        <li key={linkIdx}>
-                          <span className="text-[#1d1d1f]/70 text-sm block">
-                            {link}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+                {/* Cards Columns (Right) */}
+                <div className="col-span-9 grid grid-cols-2 gap-6">
+                  {item.cards.map((card, idx) => (
+                    <div key={idx} onClick={() => setActiveDropdown(null)}>
+                      <NavCard
+                        title={card.title}
+                        description={card.description}
+                        href={card.href}
+                        iconName={card.iconName}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>

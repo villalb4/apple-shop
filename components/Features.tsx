@@ -28,8 +28,8 @@ const FEATURES = [
 export default function Features() {
   return (
     <section className="border-y">
-      <div className="container border-x">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-x">
           {FEATURES.map((feature, index) => (
             <div
               key={index}
@@ -40,6 +40,8 @@ export default function Features() {
                   ? "sm:border-r"
                   : ""
               }`}
+
+              // className="flex flex-col items-center text-center py-12 px-6 border-1"
             >
               <div className="mb-4 p-4 border">
                 <feature.icon

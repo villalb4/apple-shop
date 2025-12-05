@@ -1,4 +1,24 @@
-export const PRODUCTS = [
+export interface Product {
+  id: number;
+  name: string;
+  slug: string;
+  category: string;
+  price: number;
+  image: string;
+  color: string;
+  isNew: boolean;
+  description: string;
+  features: string[];
+  specs: {
+    storage: string;
+    screen: string;
+    camera: string;
+    battery: string;
+    processor: string;
+  };
+}
+
+export const PRODUCTS: Product[] = [
   {
     id: 1,
     name: "iPhone 17",
@@ -330,19 +350,39 @@ export function getProductBySlug(slug: string) {
 export function getProductsByCategory(category: string) {
   // This is a simple filter. In reality, we might map 'iphones-nuevos' to a filter logic.
   // For now, I'll assume the category field matches the URL slug or I'll add logic here.
-  // The user wants /iphones-nuevos.
-  // I should probably map the URL slug to a set of criteria.
-  
-  // Let's define the mapping here or in the categories config.
-  // If I put it here, it's easier.
   
   if (category === 'iphones-nuevos') {
     return PRODUCTS.filter(p => p.name.includes('iPhone') && p.isNew);
   }
-  if (category === 'iphones-reacondicionados') {
-    return PRODUCTS.filter(p => p.name.includes('iPhone') && !p.isNew); // Assuming non-new are refurbished for this mock
-  }
   
   // Fallback: filter by exact category match if I assigned it in the array
   return PRODUCTS.filter((p) => p.category === category || p.category.includes(category));
+}
+
+export function getProductsBySubcategory(category: string, subcategory: string) {
+  const normalizedCategory = category.toLowerCase();
+  const normalizedSubcategory = subcategory.toLowerCase();
+
+  return PRODUCTS.filter((p) => {
+    // Basic category check (e.g. name contains "iPhone" if category is "iphone")
+    const matchesCategory = p.name.toLowerCase().includes(normalizedCategory) || p.category.includes(normalizedCategory);
+
+    // Subcategory check
+    if (normalizedSubcategory === "nuevos-sellados") {
+      return matchesCategory && p.isNew;
+    }
+    if (normalizedSubcategory === "semi-nuevos") {
+      return matchesCategory && !p.isNew;
+    }
+    if (normalizedSubcategory === "accesorios") {
+      // Assuming we have a way to identify accessories. 
+      // For now, let's say if category is "accesorios" or name implies it.
+      // Since we don't have explicit accessories in the mock data yet, 
+      // we'll just return items that match the category but maybe are not phones?
+      // Or just return everything for now to avoid empty list if no data.
+      return matchesCategory && p.category === "accesorios";
+    }
+
+    return matchesCategory;
+  });
 }
