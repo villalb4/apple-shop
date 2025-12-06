@@ -1,3 +1,8 @@
+/**
+ * Navigation items configuration for Header and MobileMenu
+ * This file defines the structure of the navigation menus
+ */
+
 export const NAV_ITEMS = [
   {
     name: "iPhone",
@@ -5,13 +10,13 @@ export const NAV_ITEMS = [
       title: "Nuevos Sellados",
       href: "/iphone/nuevos-sellados",
       items: [
-        "Iphone 17 Pro Max",
-        "Iphone 17 Pro",
-        "Iphone Air",
-        "Iphone 17",
-        "Iphone 16 Pro",
-        "Iphone 16",
-        "Iphone SE",
+        "iPhone 17 Pro Max",
+        "iPhone 17 Pro",
+        "iPhone Air",
+        "iPhone 17",
+        "iPhone 16 Pro",
+        "iPhone 16",
+        "iPhone SE",
       ],
     },
     cards: [
@@ -40,7 +45,6 @@ export const NAV_ITEMS = [
         "iMac M4",
         "Mac mini M4",
         "Mac Studio M2",
-        "Mac Pro",
       ],
     },
     cards: [

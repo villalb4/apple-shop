@@ -9,27 +9,26 @@ interface ProductCardProps {
   price: number;
   image: string;
   color?: string;
+  slug: string;
+  category: string;
+  subcategory: string;
 }
 
 export default function ProductCard({
-  id,
   name,
   price,
   image,
   color = "Negro",
   slug,
-  categorySlug,
-}: ProductCardProps & { slug?: string; categorySlug?: string }) {
-  const href =
-    categorySlug && slug
-      ? `/${categorySlug}/${slug}`
-      : slug
-      ? `/products/${slug}`
-      : `/products/${id}`;
+  category,
+  subcategory,
+}: ProductCardProps) {
+  // Generate proper 3-level URL: /category/subcategory/product
+  const href = `/${category}/${subcategory}/${slug}`;
 
   return (
     <Link href={href}>
-      <div className="border-1 shadow-none p-0 overflow-hidden rounded-none">
+      <div className="border-1 shadow-none p-0 overflow-hidden rounded-none hover:shadow-lg transition-shadow duration-200">
         {/* Card Header */}
         <div className="p-0 bg-gray-200 border-b">
           <div className="relative w-full aspect-square">
@@ -46,7 +45,7 @@ export default function ProductCard({
         {/* Card footer */}
         <div className="border-t border-dashed p-4">
           <span className="text-gray-500 text-sm font-semibold">
-            U${price.toLocaleString()}
+            U${price.toLocaleString("es-UY")}
           </span>
         </div>
       </div>

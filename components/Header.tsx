@@ -99,6 +99,9 @@ export default function Header() {
                   </button>
                 </DrawerTrigger>
                 <DrawerContent>
+                  <DrawerTitle className="sr-only">
+                    Menú de navegación
+                  </DrawerTitle>
                   <MobileMenu />
                 </DrawerContent>
               </Drawer>

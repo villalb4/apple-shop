@@ -20,12 +20,16 @@ import { Product } from "@/lib/products";
 interface CategoryViewProps {
   categoryName: string;
   categorySlug: string;
+  subcategoryName?: string;
+  subcategorySlug?: string;
   products: Product[];
 }
 
 export default function CategoryView({
   categoryName,
   categorySlug,
+  subcategoryName,
+  subcategorySlug,
   products,
 }: CategoryViewProps) {
   return (
@@ -38,9 +42,23 @@ export default function CategoryView({
                 <BreadcrumbLink href="/">Home</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{categoryName}</BreadcrumbPage>
-              </BreadcrumbItem>
+              {subcategoryName ? (
+                <>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href={`/${categorySlug}`}>
+                      {categoryName}
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{subcategoryName}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </>
+              ) : (
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{categoryName}</BreadcrumbPage>
+                </BreadcrumbItem>
+              )}
             </BreadcrumbList>
           </Breadcrumb>
 
@@ -63,7 +81,7 @@ export default function CategoryView({
 
         <div className="container mx-auto">
           <main className="flex-1">
-            <ProductGrid products={products} categorySlug={categorySlug} />
+            <ProductGrid products={products} />
           </main>
         </div>
       </div>

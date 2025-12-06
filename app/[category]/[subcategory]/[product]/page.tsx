@@ -8,21 +8,27 @@ import {
 } from "@/components/ui/breadcrumb";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getProductBySlug } from "@/lib/products";
+import { getProductBySlugAndCategory } from "@/lib/products";
 import FAQAccordion from "@/components/FAQAccordion";
 import { Button } from "@/components/ui/button";
 import { generateSEOMetadata } from "@/lib/metadata";
+import {
+  getCategoryName,
+  getSubcategoryName,
+  isValidCategory,
+  isValidSubcategory,
+} from "@/lib/categories-config";
 import { Metadata } from "next";
 
 interface ProductPageProps {
-  params: Promise<{ category: string; product: string }>;
+  params: Promise<{ category: string; subcategory: string; product: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const { category, product: productSlug } = await params;
-  const product = getProductBySlug(productSlug);
+  const { category, subcategory, product: productSlug } = await params;
+  const product = getProductBySlugAndCategory(productSlug, category);
 
   if (!product) {
     return generateSEOMetadata({
@@ -36,50 +42,31 @@ export async function generateMetadata({
     description: product.description,
     keywords: [
       product.name,
-      product.category,
+      getCategoryName(product.category),
+      getSubcategoryName(product.subcategory),
       product.color,
       `${product.name} ${product.color}`,
     ],
     image: product.image,
-    url: `https://tudominio.com/${category}/${productSlug}`,
+    url: `https://tudominio.com/${category}/${subcategory}/${productSlug}`,
   });
 }
 
-import CategoryView from "@/components/CategoryView";
-import { getProductsBySubcategory } from "@/lib/products";
-
-const SUBCATEGORIES = ["nuevos-sellados", "semi-nuevos", "accesorios"];
-
 export default async function ProductPage({ params }: ProductPageProps) {
-  const { category, product: productSlug } = await params;
+  const { category, subcategory, product: productSlug } = await params;
 
-  // Check if the "product" is actually a subcategory
-  if (SUBCATEGORIES.includes(productSlug)) {
-    const products = getProductsBySubcategory(category, productSlug);
-    // Capitalize for display
-    const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-    const subcategoryName = productSlug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-
-    return (
-      <CategoryView
-        categoryName={`${categoryName} - ${subcategoryName}`}
-        categorySlug={category}
-        products={products}
-      />
-    );
+  if (!isValidCategory(category) || !isValidSubcategory(subcategory)) {
+    notFound();
   }
 
-  const product = getProductBySlug(productSlug);
+  const product = getProductBySlugAndCategory(productSlug, category);
 
   if (!product) {
     notFound();
   }
 
-  // Helper to capitalize category name
-  const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+  const categoryName = getCategoryName(category);
+  const subcategoryName = getSubcategoryName(subcategory);
 
   return (
     <div className="flex flex-col gap-20 min-h-screen bg-white dark:bg-black py-12 md:py-22">
@@ -94,6 +81,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <BreadcrumbItem>
                 <BreadcrumbLink href={`/${category}`}>
                   {categoryName}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href={`/${category}/${subcategory}`}>
+                  {subcategoryName}
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
@@ -122,7 +115,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.name}
               </h1>
               <p className="text-2xl text-gray-600 dark:text-gray-400">
-                ${product.price}
+                U${product.price.toLocaleString()}
               </p>
             </div>
 
@@ -143,9 +136,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             <div className="pt-4">
-              <Button size="lg" className="w-full md:w-auto px-8 rounded-full">
-                Consultar por WhatsApp
-              </Button>
+              <a
+                href="https://wa.me/5491234567890?text=Hola,%20me%20interesa%20consultar%20sobre%20sus%20productos"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  className="w-full md:w-auto px-8 rounded-full"
+                >
+                  Consultar por WhatsApp
+                </Button>
+              </a>
             </div>
 
             {/* Features */}

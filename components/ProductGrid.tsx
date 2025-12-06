@@ -1,29 +1,25 @@
 "use client";
 
 import ProductCard from "./ProductCard";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  color?: string;
-  isNew?: boolean;
-  isSale?: boolean;
-  slug?: string;
-}
+import { Product } from "@/lib/products";
 
 interface ProductGridProps {
   products: Product[];
-  categorySlug?: string;
 }
 
-export default function ProductGrid({
-  products,
-  categorySlug,
-}: ProductGridProps) {
+export default function ProductGrid({ products }: ProductGridProps) {
+  if (products.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-gray-500 text-lg">
+          No hay productos disponibles en esta categoría.
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
       {products.map((product) => (
         <ProductCard
           key={product.id}
@@ -33,7 +29,8 @@ export default function ProductGrid({
           image={product.image}
           color={product.color}
           slug={product.slug}
-          categorySlug={categorySlug}
+          category={product.category}
+          subcategory={product.subcategory}
         />
       ))}
     </div>
