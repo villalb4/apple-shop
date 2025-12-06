@@ -4,7 +4,7 @@
  */
 
 export type CategorySlug = "iphone" | "mac" | "ipad" | "watch" | "airpods";
-export type SubcategorySlug = "nuevos-sellados" | "semi-nuevos" | "accesorios";
+export type SubcategorySlug = "nuevo" | "semi-nuevo" | "accesorios";
 
 export interface CategoryConfig {
   slug: CategorySlug;
@@ -49,14 +49,14 @@ export const CATEGORIES: Record<CategorySlug, CategoryConfig> = {
 
 // Subcategory configurations
 export const SUBCATEGORIES: Record<SubcategorySlug, SubcategoryConfig> = {
-  "nuevos-sellados": {
-    slug: "nuevos-sellados",
-    name: "Nuevos Sellados",
+  "nuevo": {
+    slug: "nuevo",
+    name: "Nuevo",
     description: "Productos nuevos en caja sellada con garantía oficial",
   },
-  "semi-nuevos": {
-    slug: "semi-nuevos",
-    name: "Semi Nuevos",
+  "semi-nuevo": {
+    slug: "semi-nuevo",
+    name: "Semi Nuevo",
     description: "Equipos reacondicionados certificados con garantía",
   },
   accesorios: {

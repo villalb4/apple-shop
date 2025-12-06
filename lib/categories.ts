@@ -7,8 +7,8 @@ export const NAV_ITEMS = [
   {
     name: "iPhone",
     mainLink: {
-      title: "Nuevos Sellados",
-      href: "/iphone/nuevos-sellados",
+      title: "Nuevo",
+      href: "/iphone/nuevo",
       items: [
         "iPhone 17 Pro Max",
         "iPhone 17 Pro",
@@ -21,9 +21,9 @@ export const NAV_ITEMS = [
     },
     cards: [
       {
-        title: "Semi Nuevos",
+        title: "Semi Nuevo",
         description: "Equipos verificados con garantía y batería al 100%",
-        href: "/iphone/semi-nuevos",
+        href: "/iphone/semi-nuevo",
         iconName: "Smartphone",
       },
       {
@@ -37,8 +37,8 @@ export const NAV_ITEMS = [
   {
     name: "Mac",
     mainLink: {
-      title: "Nuevos Sellados",
-      href: "/mac/nuevos-sellados",
+      title: "Nuevo",
+      href: "/mac/nuevo",
       items: [
         "MacBook Air M3",
         "MacBook Pro M4",
@@ -49,9 +49,9 @@ export const NAV_ITEMS = [
     },
     cards: [
       {
-        title: "Semi Nuevos",
+        title: "Semi Nuevo",
         description: "MacBooks reacondicionadas certificadas",
-        href: "/mac/semi-nuevos",
+        href: "/mac/semi-nuevo",
         iconName: "Laptop",
       },
       {
@@ -65,8 +65,8 @@ export const NAV_ITEMS = [
   {
     name: "iPad",
     mainLink: {
-      title: "Nuevos Sellados",
-      href: "/ipad/nuevos-sellados",
+      title: "Nuevo",
+      href: "/ipad/nuevo",
       items: [
         "iPad Pro M4",
         "iPad Air M2",
@@ -76,9 +76,9 @@ export const NAV_ITEMS = [
     },
     cards: [
       {
-        title: "Semi Nuevos",
+        title: "Semi Nuevo",
         description: "iPads en excelente estado garantizados",
-        href: "/ipad/semi-nuevos",
+        href: "/ipad/semi-nuevo",
         iconName: "Tablet",
       },
       {
@@ -92,8 +92,8 @@ export const NAV_ITEMS = [
   {
     name: "Watch",
     mainLink: {
-      title: "Nuevos Sellados",
-      href: "/watch/nuevos-sellados",
+      title: "Nuevo",
+      href: "/watch/nuevo",
       items: [
         "Apple Watch Series 10",
         "Apple Watch Ultra 2",
@@ -104,9 +104,9 @@ export const NAV_ITEMS = [
     },
     cards: [
       {
-        title: "Semi Nuevos",
+        title: "Semi Nuevo",
         description: "Apple Watch verificados y funcionales",
-        href: "/watch/semi-nuevos",
+        href: "/watch/semi-nuevo",
         iconName: "Watch",
       },
       {
@@ -120,8 +120,8 @@ export const NAV_ITEMS = [
   {
     name: "AirPods",
     mainLink: {
-      title: "Nuevos Sellados",
-      href: "/airpods/nuevos-sellados",
+      title: "Nuevo",
+      href: "/airpods/nuevo",
       items: [
         "AirPods Pro 2 (USB-C)",
         "AirPods 4",
@@ -131,9 +131,9 @@ export const NAV_ITEMS = [
     },
     cards: [
       {
-        title: "Semi Nuevos",
+        title: "Semi Nuevo",
         description: "AirPods limpios y desinfectados",
-        href: "/airpods/semi-nuevos",
+        href: "/airpods/semi-nuevo",
         iconName: "Headphones",
       },
       {
