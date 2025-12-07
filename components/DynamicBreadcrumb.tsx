@@ -18,7 +18,7 @@ interface DynamicBreadcrumbProps {
 export default function DynamicBreadcrumb({ items }: DynamicBreadcrumbProps) {
   return (
     <Breadcrumb>
-      <BreadcrumbList>
+      <BreadcrumbList className="flex-nowrap overflow-x-auto whitespace-nowrap px-1 sm:px-0 no-scrollbar">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 
