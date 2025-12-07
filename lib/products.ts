@@ -19,6 +19,7 @@ export interface Product {
     battery: string;
     processor: string;
   };
+  images: string[];
 }
 
 export const PRODUCTS: Product[] = [
@@ -50,6 +51,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 33 horas de video",
       processor: "A18 Pro",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 2,
@@ -78,6 +80,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 29 horas de video",
       processor: "A18 Pro",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 3,
@@ -106,6 +109,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 27 horas de video",
       processor: "A18",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 4,
@@ -134,6 +138,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 26 horas de video",
       processor: "A18",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 5,
@@ -153,7 +158,7 @@ export const PRODUCTS: Product[] = [
       "Sistema de cámaras Pro",
       "Hasta 27 horas de reproducción de video",
       "Dynamic Island",
-    ],
+      ],
     specs: {
       storage: "256GB",
       screen: "6.3 pulgadas",
@@ -161,6 +166,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 27 horas de video",
       processor: "A17 Pro",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 6,
@@ -188,6 +194,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 22 horas de video",
       processor: "A17",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 7,
@@ -215,6 +222,7 @@ export const PRODUCTS: Product[] = [
       battery: "Hasta 15 horas de video",
       processor: "A15 Bionic",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 
   // iPhone - Semi Nuevos
@@ -244,6 +252,7 @@ export const PRODUCTS: Product[] = [
       battery: "100% capacidad",
       processor: "A17 Pro",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 9,
@@ -271,6 +280,7 @@ export const PRODUCTS: Product[] = [
       battery: "100% capacidad",
       processor: "A16 Bionic",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 
   // Mac - Nuevos Sellados
@@ -300,6 +310,7 @@ export const PRODUCTS: Product[] = [
       battery: "18 horas",
       processor: "M3",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 11,
@@ -327,6 +338,7 @@ export const PRODUCTS: Product[] = [
       battery: "22 horas",
       processor: "M4",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 12,
@@ -354,6 +366,7 @@ export const PRODUCTS: Product[] = [
       battery: "N/A",
       processor: "M4",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 
   // iPad - Nuevos Sellados
@@ -383,6 +396,7 @@ export const PRODUCTS: Product[] = [
       battery: "10 horas",
       processor: "M4",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 14,
@@ -410,6 +424,7 @@ export const PRODUCTS: Product[] = [
       battery: "10 horas",
       processor: "M2",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 
   // Apple Watch - Nuevos Sellados
@@ -439,6 +454,7 @@ export const PRODUCTS: Product[] = [
       battery: "18 horas",
       processor: "S10",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 16,
@@ -466,6 +482,7 @@ export const PRODUCTS: Product[] = [
       battery: "36 horas",
       processor: "S9",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 
   // AirPods - Nuevos Sellados
@@ -495,6 +512,7 @@ export const PRODUCTS: Product[] = [
       battery: "6 horas (30 con estuche)",
       processor: "H2",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
   {
     id: 18,
@@ -522,6 +540,7 @@ export const PRODUCTS: Product[] = [
       battery: "20 horas",
       processor: "H1",
     },
+    images: ["/images/card.jpg", "/images/card.jpg", "/images/card.jpg", "/images/card.jpg"],
   },
 ];
 

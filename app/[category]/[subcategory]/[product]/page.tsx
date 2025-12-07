@@ -1,4 +1,5 @@
 import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
+import ProductImageGallery from "@/components/ProductImageGallery";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getProductBySlugAndCategory } from "@/lib/products";
@@ -76,18 +77,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
-          <div className="relative aspect-square bg-gray-100 overflow-hidden">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <ProductImageGallery
+            images={product.images || [product.image]}
+            productName={product.name}
+          />
 
           {/* Product Details */}
-          <div className="space-y-8">
+          <div className="space-y-8 sticky top-24 self-start">
             <div>
               <h1 className="text-4xl font-semibold tracking-tight mb-2">
                 {product.name}
