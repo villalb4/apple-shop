@@ -1,11 +1,4 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import ProductGrid from "@/components/ProductGrid";
 import FAQAccordion from "@/components/FAQAccordion";
 import {
@@ -32,35 +25,21 @@ export default function CategoryView({
   subcategorySlug,
   products,
 }: CategoryViewProps) {
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    ...(subcategoryName
+      ? [
+          { label: categoryName, href: `/${categorySlug}` },
+          { label: subcategoryName },
+        ]
+      : [{ label: categoryName }]),
+  ];
+
   return (
     <div className="flex flex-col gap-20 min-h-screen py-10 md:py-20">
       <div>
-        <div className="container mx-auto mb-10 flex items-center justify-between">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              {subcategoryName ? (
-                <>
-                  <BreadcrumbItem>
-                    <BreadcrumbLink href={`/${categorySlug}`}>
-                      {categoryName}
-                    </BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>{subcategoryName}</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </>
-              ) : (
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{categoryName}</BreadcrumbPage>
-                </BreadcrumbItem>
-              )}
-            </BreadcrumbList>
-          </Breadcrumb>
+        <div className="container mx-auto mb-5 flex items-center justify-between">
+          <DynamicBreadcrumb items={breadcrumbItems} />
 
           <Select>
             <SelectTrigger className="w-[200px] rounded-none">

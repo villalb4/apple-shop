@@ -1,11 +1,4 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import DynamicBreadcrumb from "@/components/DynamicBreadcrumb";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getProductBySlugAndCategory } from "@/lib/products";
@@ -71,30 +64,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="flex flex-col gap-20 min-h-screen bg-white dark:bg-black py-12 md:py-22">
       <div className="container mx-auto">
-        <div className="mb-12">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href={`/${category}`}>
-                  {categoryName}
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href={`/${category}/${subcategory}`}>
-                  {subcategoryName}
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{product.name}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+        <div className="mb-7">
+          <DynamicBreadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: categoryName, href: `/${category}` },
+              { label: subcategoryName, href: `/${category}/${subcategory}` },
+              { label: product.name },
+            ]}
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
